@@ -44,8 +44,8 @@ def news_rss():
         # item tags in RSS file
         for i in items:
 
-            title = i.find('title').text
-            link = i.find('link').text
+            title = i.find('title')
+            link = i.find('link')
             
             # init dictionary
             podcast_item = {
@@ -98,10 +98,12 @@ def display():
 def save_info(article_list):
     for elem in article_list:
         print(f"{elem}\n\n")
-        
-    json_object = json.dumps(article_list, indent=4, sort_keys=True)
-    with open('rss.json', 'w') as outfile:
-        outfile.write(json_object)
+
+    # json_object = json.dumps(article_list, indent=4, sort_keys=True)
+    with open('FILE.txt', 'w') as outfile:
+        for elem in article_list: 
+            outfile.write('%s\n' % elem)
+
 
 if __name__ == '__main__':
     print('Start scraping')
